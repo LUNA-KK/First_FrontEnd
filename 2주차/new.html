@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="color:pink">자기소개페이지</h1>
+
+    <div class = "image">
+        <img src = "image.jpg" alt="error">
+    </div>
+
+    <button type="button" id = "myButton" style = "width: 100px; height: 50px; margin-top: 10px;" >숨기기</button>
+    <p>이름 : 김소민</p>
+    <p>학번 : 2022136025</p>
+    <p id = "number">전번 : 01095978653</p>
+
+    <script>
+        let hide = document.getElementById("number")
+        let num = document.getElementById("myButton")
+
+        function toggle(){
+        if(num.innerText == "숨기기"){
+            hide.style.display = "none"
+            num.innerText = "보기"
+        }
+        else{
+            hide.style.display = "block"
+            num.innerText = "숨기기"
+        }
+            
+        }
+        num.addEventListener('click', toggle)
+        
+
+    </script>
+</body>
+</html>
