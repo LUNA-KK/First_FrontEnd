@@ -5,8 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    test
-</body>
-</html>
+    <head>
+      <title>Email Validation Example</title>
+      <script>
+          function validateEmail() {
+              const email = document.getElementById("email").value;
+              const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+              const result = pattern.test(email);
+              if (result) {
+                  alert("유효한 이메일 주소입니다.");
+              } else {
+                  alert("유효하지 않은 이메일 주소입니다.");
+              }
+          }
+      </script>
+  </head>
+  <body>
+      <h1>Email Validation Example</h1>
+      <input type="text" id="email" placeholder="이메일 주소를 입력하세요">
+      <button onclick="validateEmail()">검증</button>
+  </body>
+  </html>

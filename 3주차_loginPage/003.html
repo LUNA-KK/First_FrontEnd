@@ -8,10 +8,47 @@
 
     <!-- 부트스트랩 css 사용 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-    
+   
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function getRandomCatImage() {
+          axios.get('https://api.thecatapi.com/v1/images/search?size=full')
+            .then(function (response) {
+              const catData = response.data[0];
+              const catUrl = catData.url;
+              const catWidth = catData.width;
+              const catHeight = catData.height;  //크기 사용 방법?
+              
+              // 이미지 요소 생성 및 설정
+              const imageElement = document.createElement('img');//img 요소 동적 생성
+              imageElement.src = catUrl; //scr 속성에 URL 할당
+              imageElement.alt = 'Random Cat Image';
+              imageElement.width = 640; // 사진의 가로 크기 고정
+              imageElement.height = 427; // 사진의 세로 크기 고정
+              
+              // 이미지를 표시할 요소에 추가
+              const containerElement = document.getElementById('cat-image-container'); //화면에 이미지 출력
+              containerElement.innerHTML = ''; // 기존 내용 초기화
+              containerElement.appendChild(imageElement);
+            })
+            .catch(function (error) {
+              console.error(error);
+            });
+        }
+      </script>
+
+      <style>
+        #cat-image-container{
+            margin-top : 80px;
+        }
+      </style>
 </head>
 <body>
-   
+    <h1>Random Cat Image</h1>
+    <button onclick="getRandomCatImage()">Get Random Cat Image</button>
+    <div id="cat-image-container"></div>
+
+
     <h1 style="color:rgb(92, 51, 206); margin-bottom: 20px; margin-top: 60px;">topnav</h1>
     <style> 
     body{

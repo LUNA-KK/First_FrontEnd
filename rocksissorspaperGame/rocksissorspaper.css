@@ -1,0 +1,22 @@
+.buttonsBackground{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.symbol{
+    padding: 10px;
+    margin: 30px;
+    overflow: hidden;
+    border-radius: 100%;
+    border: solid #eee;
+    width: 120px;
+    height: 120px;
+    margin-top: 20px;
+    background-color: white;
+
+}
+button{    
+    border-radius: 10px;
+    margin: 10px;
+}

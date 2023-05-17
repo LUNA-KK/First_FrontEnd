@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 부트스트랩 css 사용 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    <style>
+      .pw-group-append {
+    display: flex;
+    }
+    </style>
+
+</head>
+<body>
+    <style> 
+        body{
+            margin: 50px;
+        }</style>
+    <h1 style="color:rgb(92, 51, 206); margin-bottom: 30px; margin-top: 60px">Sign in</h1>
+
+<form class="row g-3">
+    <div class="col-md-6">
+      <label for="inputId" class="form-label">id</label>
+      <div class="input-group"> 
+        <input type="id" class="form-control" id="inputId" placeholder="Enter your ID">
+                <div class="input-group-append">
+          <button onclick="validateEmail()" id="checkId" style="margin-left: 5px;">check your email</button>
+        </div>
+      </div>
+      <span id="myElement" style="color: red;">Please check your email</span>
+    </div> 
+</div>
+
+    <div class="col-md-6">
+      <label for="inputPw" class="form-label">pw</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter your PW">
+    </div>
+
+<form class="row g-3">
+  <div class="col-md-6">
+        <label for="inputCheck" class="form-label">pw-check</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="inputCheck" placeholder="Check your PW">
+          <div class="pw-group-append">
+            <button onclick="validatePassword()" id="checkPw" style="margin-left: 5px;">check your password</button>
+          </div>
+        </div>
+        <span id="message" style="color: red;">Please check your password</span>
+    </div>
+  </div>
+    
+
+    <div class="col-md-6">
+        <label for="inputSN" class="form-label">student-number</label>
+        <input type="text" class="form-control" id="inputSN" placeholder="ex) 2022136025" maxlength="10"> 
+      </div>
+    <div class="col-md-6">
+      <label for="inputMajor" class="form-label">major</label>
+      <input type="text" class="form-control" id="inputMajor" placeholder="ex) cse">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPN" class="form-label">phone-number</label>
+        <input type="text" class="form-control" id="inputPN" placeholder="Enter your phone-number">
+      </div>
+
+    </div>
+    <div class="col-12">
+        <button type="button"  class="btn btn-light" id = "cancel" onClick="location.href='003_login.html'" style = "width: 100px; height: 50px; margin-top: 30px; margin-right: 15px;" >cancel</button>
+        <button type="button"  class="btn btn-info" id = "signUp" onClick="location.href='003_login.html'" style = "width: 100px; height: 50px; margin-top: 30px;" >sign up</button>
+    </div>
+  </form>
+
+  <script>
+      
+    function validateEmail() {  //id 이메일 유효성 검사
+      event.preventDefault();
+        const inputId = document.getElementById("inputId").value;
+        const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const result = pattern.test(inputId); //일치하면 true 반환
+        if (result) {
+            //alert("Valid email! You can proceed.");
+            var myElement = document.getElementById('myElement');
+            myElement.innerHTML = "<span style='color: blue;'>Valid email! You can proceed.</span>"; // 내용 수정
+            }
+        else {
+            alert("Invalid email. Please enter a valid email address.");
+        }
+    }
+    function validatePassword(event) {
+        event.preventDefault();
+        var password = document.getElementById('password').value;
+        var inputCheck = document.getElementById('inputCheck').value;
+        if (password === inputCheck) {
+            //alert("비밀번호가 확인되었습니다.");
+            var message = document.getElementById('message');
+            message.innerHTML = "<span style='color: blue;'>You can proceed.</span>";
+          } else {
+            alert("비밀번호가 틀렸습니다!");
+        }
+    }
+
+    //전공 자동 입력
+    document.getElementById("inputSN").addEventListener("change", function() {
+      const inputSNValue = this.value; // 입력된 학번 값 가져오기
+      //"136"인 경우 "컴퓨터공학부"를 입력
+      if (inputSNValue.length === 10 && inputSNValue.substr(4, 3) === '136') {
+        document.getElementById("inputMajor").value = "컴퓨터공학부";
+      }
+      if (inputSNValue.length === 10 && inputSNValue.substr(4, 3) === '140') {
+        document.getElementById("inputMajor").value = "메카트로닉스공학부";
+      }
+      if (inputSNValue.length === 10 && inputSNValue.substr(4, 3) === '172') {
+        document.getElementById("inputMajor").value = "디자인건축공학과";
+      }
+      if (inputSNValue.length === 10 && inputSNValue.substr(4, 3) === '174') {
+        document.getElementById("inputMajor").value = "에너지신소재화학공학부";
+      }
+      if (inputSNValue.length === 10 && inputSNValue.substr(4, 3) === '161') {
+        document.getElementById("inputMajor").value = "전기전자통신공학부";
+      }
+      if (inputSNValue.length === 10 && inputSNValue.substr(4, 3) === '180') {
+        document.getElementById("inputMajor").value = "산업경영학부";
+      }
+      if (inputSNValue.length === 10 && inputSNValue.substr(4, 3) === '120') {
+        document.getElementById("inputMajor").value = "기계공학부";
+      }
+      if (inputSNValue.length === 10 && inputSNValue.substr(4, 3) === '185') {
+        document.getElementById("inputMajor").value = "고용서비스정책학과";
+      }
+    });
+
+
+    function formatPhoneNumber(phoneNumber) {
+      // 숫자를 제외한 모든 문자 제거
+      const cleaned = phoneNumber.replace(/\D/g, ""); // \D : 숫자가 아닌 문자를 나타내는 정규표현 패턴, g는 global(전역 검색) 
+      // 맨 앞에 0을 붙이고, 3자리와 4자리 구분하여 형식 적용
+      const formatted = cleaned.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+      return formatted;
+    }  
+    
+</script>
+
+    <!--  부트스트랩 js 사용 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

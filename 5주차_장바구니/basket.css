@@ -1,0 +1,47 @@
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    position: absolute;
+    top: 90px;
+    left: 110px;
+    
+    width: 900px;
+}
+
+.basket{
+    width: 100px;
+    height: 140px;
+
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+
+    padding: 10px;
+    margin: 20px;
+
+    border-radius: 8px;
+    box-shadow:.1rem .2rem 1.4rem  #d0cece;
+    transition-duration: 0.5s;
+}
+
+.basket:active {
+    box-shadow: none;
+}
+
+#space {
+    position: absolute;
+    top: 110px;
+    right: 200px; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 500px;
+    height: auto;
+    background-color: whitesmoke;
+    border-radius: 12px;
+    font-size: 1.1rem;
+}

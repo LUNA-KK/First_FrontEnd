@@ -26,6 +26,26 @@
          <button type="button"  class="btn btn-primary" id = "Login" style = "width: 100px; height: 50px; margin-top: 30px;" >Login</button>
     </div>
     </form>      
+    <script>
+        // DOMContentLoaded 이벤트 또는 로드 이벤트가 발생할 때 함수 호출
+        document.addEventListener('DOMContentLoaded', function() {
+        // Login 버튼 클릭 이벤트 리스너 등록
+        document.getElementById('Login').addEventListener('click', function() {
+            // inputid와 inputpw의 값 가져오기
+            var inputidValue = document.getElementById('inputid').value;
+            var inputpwValue = document.getElementById('inputpw').value;
+            
+            // 입력된 값과 비교하여 Login 버튼이 실행되는 조건 확인
+            if (inputidValue === 'sominID' && inputpwValue === 'sominPW') {
+            // Login 버튼이 실행되는 경우에 대한 동작 수행
+            alert('Login');
+            }
+            else {
+                alert('id, pw를 입력해주세요');
+            }
+        });
+        });
+    </script>
     <!--  부트스트랩 js 사용 -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
