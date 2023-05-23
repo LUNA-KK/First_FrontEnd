@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOPWATCH</title>
+</head>
+<body>
+  <div style="text-align: center;">
+    <h3>Stopwatch</h3>
+    <h1><span id="min">00</span>:<span id="sec">00</span></h1>
+    <button class="w-btn w-btn-green" id="start">Start</button>
+    <button class="w-btn w-btn-indigo" id="wait">5초 대기</button>
+</div>
+
+<script>
+  let timeoutId;
+  let sec=0;
+  let min;
+
+  const s = document.getElementById('start');
+  const t = document.getElementById('sec')
+  function start(){
+    console.log('start')
+    timeoutId = setInterval(() => {
+      sec++;
+      if(sec<10)
+      {
+        t.innerText = "0" + sec;
+      }
+      else t.innerText = sec;
+    }, 1000);
+  }
+
+  s.addEventListener('click', start);
+
+  async function waitFiveSec(){
+    const 오초 = new Promise((resolve, reject) => {
+      let id = setTimeout(() => {
+        if (id == timeoutId) resolve(true)
+        else reject(true);
+      }, 5000)
+      //timeoutId = id;
+    })
+    await 오초;
+  }
+
+  const f = document.getElementById('wait');
+  async function wait() {
+    clearInterval(timeoutId);
+    await waitFiveSec();  //await 붙이면 waitFiveSec() 끝날때 까지 다음실행 안됨
+    start();
+  }
+
+  f.addEventListener('click', wait);
+
+</script>
+</body>
+</html>
